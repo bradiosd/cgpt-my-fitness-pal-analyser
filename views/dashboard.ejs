@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MFP Analyzer</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+    const dates = <%- JSON.stringify(dates) %>;
+    const weights = <%- JSON.stringify(weights) %>;
+    const calories = <%- JSON.stringify(calories) %>;
+    const exerciseMinutes = <%- JSON.stringify(exerciseMinutes) %>;
+    const carbs = <%- JSON.stringify(carbs) %>;
+    const proteins = <%- JSON.stringify(proteins) %>;
+    const fats = <%- JSON.stringify(fats) %>;
+    const sugars = <%- JSON.stringify(sugars) %>;
+  </script> 
+</head>
+<body>
+  <div id="weightPlot"></div>
+  <div id="caloriesPlot"></div>
+  <div id="weightCaloriesPlot"></div>
+  <div id="exercisePlot"></div>
+  <div id="macroPlot"></div>
+<div id="weightMacroPlot"></div>
+<script>
+    // Weight trend over time
+    Plotly.newPlot('weightPlot', [{
+      x: dates,
+      y: weights,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline' },
+      name: 'Weight'
+    }], {
+      title: 'Weight Trend Over Time'
+    });
+
+    // Calories trend over time
+    Plotly.newPlot('caloriesPlot', [{
+      x: dates,
+      y: calories,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline' },
+      name: 'Calories Consumed'
+    }], {
+      title: 'Calories Trend Over Time'
+    });
+
+    // Combine weight and calories
+    Plotly.newPlot('weightCaloriesPlot', [
+    {
+      x: dates,
+      y: weights,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline' },
+      name: 'Weight (kg)'
+    },
+    {
+      x: dates,
+      y: calories,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline' },
+      name: 'Calories Consumed',
+      yaxis: 'y2'
+    }
+  ], {
+    title: 'Weight and Calories Trend Over Time',
+    yaxis: { title: 'Weight (kg)' },
+    yaxis2: {
+      title: 'Calories Consumed',
+      overlaying: 'y',
+      side: 'right'
+    }
+  });
+
+    // Exercise trend over time
+    Plotly.newPlot('exercisePlot', [{
+      x: dates,
+      y: exerciseMinutes,
+      type: 'scatter',
+      mode: 'lines+markers',
+      line: { shape: 'spline' },
+      name: 'Exercise Duration'
+    }], {
+      title: 'Exercise Trend Over Time'
+    });
+
+    // Macro trends over time (Carbs, Protein, Fat, Sugar)
+    Plotly.newPlot('macroPlot', [
+      {
+        x: dates,
+        y: carbs,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { shape: 'spline' },
+        name: 'Carbohydrates (g)'
+      },
+      {
+        x: dates,
+        y: proteins,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { shape: 'spline' },
+        name: 'Protein (g)'
+      },
+      {
+        x: dates,
+        y: fats,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { shape: 'spline' },
+        name: 'Fat (g)'
+      },
+      {
+        x: dates,
+        y: sugars,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { shape: 'spline' },
+        name: 'Sugar'
+      }
+    ], {
+      title: 'Macro Trends Over Time'
+    });
+
+    // Weight and macro trends
+    Plotly.newPlot('weightMacroPlot', [
+  {
+    x: dates,
+    y: weights,
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline' },
+    name: 'Weight (kg)'
+  },
+  {
+    x: dates,
+    y: carbs,
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline' },
+    name: 'Carbohydrates (g)',
+    yaxis: 'y2'
+  },
+  {
+    x: dates,
+    y: proteins,
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline' },
+    name: 'Protein (g)',
+    yaxis: 'y2'
+  },
+  {
+    x: dates,
+    y: fats,
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline' },
+    name: 'Fat (g)',
+    yaxis: 'y2'
+  },
+  {
+    x: dates,
+    y: sugars,
+    type: 'scatter',
+    mode: 'lines+markers',
+    line: { shape: 'spline' },
+    name: 'Sugar',
+    yaxis: 'y2'
+  }
+], {
+  title: 'Weight and Macro Trends Over Time',
+  yaxis: { title: 'Weight (kg)' },
+  yaxis2: {
+    title: 'Macro Nutrients (g)',
+    overlaying: 'y',
+    side: 'right'
+  }
+});
+
+</script>
+
+</body>
+</html>
