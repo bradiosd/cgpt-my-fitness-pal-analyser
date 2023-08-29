@@ -41,3 +41,10 @@ You must first export all your data from MFP. This can be done for 7 days for fr
 4. Open `http://localhost:3000`
 5. ????
 6. More profit
+
+#### Some example graphs
+
+![](screens/calories.png)
+![](screens/macros.png)
+![](screens/measurements.png)
+![](screens/weightvscalories.png)
