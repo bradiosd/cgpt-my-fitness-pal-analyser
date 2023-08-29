@@ -1,4 +1,5 @@
 node_modules/
 raw/*
-!raw/*.example.csv
+!*.example.csv
+output.csv
 .~lock*
