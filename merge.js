@@ -91,7 +91,9 @@ const writeMergedDataToFile = (data, outputFile) => {
 // Get all CSV files in the "raw" folder
 const filesDir = path.join(__dirname, 'raw');
 const allFiles = fs.readdirSync(filesDir);
-const csvFiles = allFiles.filter(file => path.extname(file) === '.csv').map(file => path.join(filesDir, file));
+const csvFiles = allFiles
+  .filter(file => path.extname(file) === '.csv' && !file.includes('example'))
+  .map(file => path.join(filesDir, file));
 
 // Using the functions
 const mergedData = mergeData(csvFiles);

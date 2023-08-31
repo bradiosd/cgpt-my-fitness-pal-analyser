@@ -2,9 +2,9 @@
 
 Built almost entirely by ChatGPT with some guidance from me
 
-##### You must ask the right questions
+You must ask the right questions
 
-Chat references
+#### ChatGPT Transcripts
 
 https://chat.openai.com/share/224e8608-618f-451e-8adc-de1994bff059
 https://chat.openai.com/share/64e4c6cd-eebb-4667-99f9-3f9ffdc928ed
@@ -33,8 +33,6 @@ You must first export all your data from MFP. This can be done for 7 days for fr
 
 #### Running the app
 
-###### Delete example data first.
-
 1. `yarn install`
 2. `yarn merge`
 3. `yarn ui`
@@ -48,3 +46,4 @@ You must first export all your data from MFP. This can be done for 7 days for fr
 ![](screens/macros.png)
 ![](screens/measurements.png)
 ![](screens/weightvscalories.png)
+ q
